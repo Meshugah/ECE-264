@@ -68,6 +68,53 @@ void test_arrayCountNegative(int * array, int len, int expected)
     printf("\n");
 }
 
+
+void test_04_arrayFindSmallest()
+{
+  printf("Testing array smallest finder\n");
+  int array[] = { 3, 4, 5, 2 };
+  int array2[] = { 3, 2, 2 , 3 };
+  int len = 4;
+  int ind1 = arrayFindSmallest(array, len); // ind1 == 0
+  printf("\nSmallest = %d\n", ind1);
+
+
+  int ind2 = arrayFindSmallest(array2, len); // ind2 == 1
+  printf("\nSmallest = %d\n", ind2);
+
+
+  printf("\n");
+}
+void test_03_arrayIndexRFind()
+{
+  printf("Testing array RFinder\n");
+  int haystack[] = { 1, 47, -45, 4 , 4 ,6 ,47 ,-45 };
+   int len = 8;
+   int x1 = arrayIndexRFind(-45, haystack, len); // x1 == 0
+printf("\n x1 = %d   should be 7", x1);
+
+   int x2 = arrayIndexRFind(47, haystack, len); // x2 == 3
+printf("\n x2 = %d   should be 6", x2);
+
+   int x3 = arrayIndexRFind(4, haystack, len); // x3 == -1
+printf("\n x3 = %d should be 4\n", x3);
+}
+
+void test_02_arrayIsIncreasing()
+{
+  printf("Testing arrayIsIncreasing(...)\n");
+  int array1[] = { 1, 1, 2, 3, 3 };
+  int len1 = 5;
+  int array2[] = { 1, 2, 0, 4 };
+  int len2 = 4;
+  int isInc1 = arrayIsIncreasing(array1, len1); // isInc1 == 1
+  printf("Array1: %d\n", isInc1);
+  int isInc2 = arrayIsIncreasing(array2, len2); // isInc2 == 0
+  printf("Array2: %d\n", isInc2);
+  int isInc3 = arrayIsIncreasing(NULL, 0);      // isInc3 == 1
+  printf("Array3: %d\n", isInc3);
+  
+}
 void test_01_arrayCountNegative()
 {
     printf("Testing arrayCountNegative(...)\n");
@@ -96,7 +143,7 @@ void test_01_arrayCountNegative()
 
 int main(int argc, char * * argv)
 {
-    printf("Welcome to ECE264, we are working on PA01.\n"
+  /*  printf("Welcome to ECE264, we are working on PA01.\n"
 	   "\n"
 	   "You are encouraged to edit this file in order to test\n"
 	   "the behavior of the functions you write in answer02.c\n"
@@ -106,18 +153,23 @@ int main(int argc, char * * argv)
 	   "\n"
 	   "Don't forget to post questions on blackboard, and ask\n"
 	   "the TAs and your classmates for help.\n"
-	   "\n");
+	   "\n"); */
+
 
     // Uncomment to run two example (incomplete) testcases.
     // test_00_arraySum();
     // test_01_arrayCountNegative();
+    // test_02_arrayIsIncreasing(); 
+    // test_03_arrayIndexRFind();
+    // test_04_arrayFindSmallest();
+  
 
-    // Below are some testcases for the latter part of the assignment.
+// Below are some testcases for the latter part of the assignment.
     // These testcases are incomplete, and are guides to get you started.
 
-    const char * s1 = "Hello World!";
-    const char * s2 = "";
-    const char * s3 = "foo";
+    //const char * s1 = "Hello World!";
+    //const char * s2 = "";
+    //const char * s3 = "foo";
 
     // -- my_strlen, should be: 12, 0, and 3
 

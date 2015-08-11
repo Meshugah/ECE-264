@@ -1,0 +1,8 @@
+Breakpoint 1 at 0x40077c: file pa01.c, line 59.
+Starting program: /home/shay/b/vkarthi/ECE264/solutions/ECE-264/PA01/pa01 
+
+Program exited normally.
+No symbol "argc" in current context.
+The program is not being run.
+The program is not being run.
+The program is not being run.
