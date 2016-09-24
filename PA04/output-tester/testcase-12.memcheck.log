@@ -1,0 +1,108 @@
+==6889== Memcheck, a memory error detector
+==6889== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==6889== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==6889== Command: ./a.out images/02-cat-chess.ee264 student-out-11_02-cat-chess.bmp
+==6889== Parent PID: 6887
+==6889== 
+--6889-- 
+--6889-- Valgrind options:
+--6889--    --tool=memcheck
+--6889--    --leak-check=full
+--6889--    --verbose
+--6889--    --log-file=memcheck-11.log
+--6889-- Contents of /proc/version:
+--6889--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--6889-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--6889-- Page sizes: currently 4096, max supported 4096
+--6889-- Valgrind library directory: /usr/lib64/valgrind
+--6889-- Reading syms from /tmp/.FsUH1b/a.out
+--6889-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--6889--    object doesn't have a dynamic symbol table
+--6889-- Reading syms from /lib64/ld-2.12.so
+--6889--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--6889--   .. build-id is valid
+--6889-- Scheduler: using generic scheduler lock implementation.
+--6889-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==6889== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6889-by-vkarthi-on-ecegrid-thin5.ecn.purdue.edu
+==6889== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6889-by-vkarthi-on-ecegrid-thin5.ecn.purdue.edu
+==6889== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6889-by-vkarthi-on-ecegrid-thin5.ecn.purdue.edu
+==6889== 
+==6889== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==6889== don't want to do, unless you know exactly what you're doing,
+==6889== or are doing some strange experiment):
+==6889==   /usr/lib64/valgrind/../../bin/vgdb --pid=6889 ...command...
+==6889== 
+==6889== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==6889==   /path/to/gdb ./a.out
+==6889== and then give GDB the following command
+==6889==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=6889
+==6889== --pid is optional if only one valgrind process is running
+==6889== 
+--6889-- REDIR: 0x368b8176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--6889-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--6889-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--6889-- REDIR: 0x368b8174e0 (index) redirected to 0x4a07c30 (index)
+--6889-- REDIR: 0x368b817560 (strcmp) redirected to 0x4a08570 (strcmp)
+--6889-- Reading syms from /lib64/libc-2.12.so
+--6889--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--6889--   .. build-id is valid
+--6889-- REDIR: 0x368bc84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6889-- REDIR: 0x368bc86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6889-- REDIR: 0x368bc82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--6889-- REDIR: 0x368bc7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6889-- REDIR: 0x368bd28350 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--6889-- REDIR: 0x368bc81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6889-- REDIR: 0x368bd33620 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--6889-- REDIR: 0x368bc8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--6889-- REDIR: 0x368bc84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--6889-- REDIR: 0x368bc7b520 (free) redirected to 0x4a063a9 (free)
+--6889-- REDIR: 0x368bc7a640 (malloc) redirected to 0x4a069ac (malloc)
+--6889-- REDIR: 0x368bc89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+==6889== Conditional jump or move depends on uninitialised value(s)
+==6889==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==6889==    by 0x400D90: Image_load (answer04.c:150)
+==6889==    by 0x401D2C: main (<stdin>:61)
+==6889== 
+==6889== Conditional jump or move depends on uninitialised value(s)
+==6889==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==6889==    by 0x400DA0: Image_load (answer04.c:151)
+==6889==    by 0x401D2C: main (<stdin>:61)
+==6889== 
+==6889== 
+==6889== HEAP SUMMARY:
+==6889==     in use at exit: 568 bytes in 1 blocks
+==6889==   total heap usage: 3 allocs, 2 frees, 1,160 bytes allocated
+==6889== 
+==6889== Searching for pointers to 1 not-freed blocks
+==6889== Checked 65,024 bytes
+==6889== 
+==6889== LEAK SUMMARY:
+==6889==    definitely lost: 0 bytes in 0 blocks
+==6889==    indirectly lost: 0 bytes in 0 blocks
+==6889==      possibly lost: 0 bytes in 0 blocks
+==6889==    still reachable: 568 bytes in 1 blocks
+==6889==         suppressed: 0 bytes in 0 blocks
+==6889== Reachable blocks (those to which a pointer was found) are not shown.
+==6889== To see them, rerun with: --leak-check=full --show-reachable=yes
+==6889== 
+==6889== Use --track-origins=yes to see where uninitialised values come from
+==6889== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+==6889== 
+==6889== 1 errors in context 1 of 2:
+==6889== Conditional jump or move depends on uninitialised value(s)
+==6889==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==6889==    by 0x400DA0: Image_load (answer04.c:151)
+==6889==    by 0x401D2C: main (<stdin>:61)
+==6889== 
+==6889== 
+==6889== 1 errors in context 2 of 2:
+==6889== Conditional jump or move depends on uninitialised value(s)
+==6889==    at 0x4A063E3: free (vg_replace_malloc.c:446)
+==6889==    by 0x400D90: Image_load (answer04.c:150)
+==6889==    by 0x401D2C: main (<stdin>:61)
+==6889== 
+--6889-- 
+--6889-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--6889-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==6889== 
+==6889== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)

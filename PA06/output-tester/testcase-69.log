@@ -1,0 +1,26 @@
+
+Testcase 69
+   Testing: SparseNode_merge(a1)
+   Built array_1 a1:
+   (4,20)->(40000,3)
+                    ->(6,5)->(30,-7)
+         ->(2,22)
+                 ->(0,100)->(1,-30)
+   Built array_2 a5:
+   (1,5)->(10,3)->(25,3)
+                        ->(11,-4)
+                ->(8,4)
+                       ->(4,-30)->(7,20)
+   Merge Node:
+   Program received signal SIGSEGV, Segmentation fault.
+   0x0000000000400c68 in travel_array2 (root=0x605350, array2=0x605190) at answer06.c:190
+   190		tmp->value += array2->value;
+   #0  0x0000000000400c68 in travel_array2 (root=0x605350, array2=0x605190) at answer06.c:190
+   #1  0x0000000000400cb1 in travel_array2 (root=0x605350, array2=0x605170) at answer06.c:194
+   #2  0x0000000000400c2a in travel_array2 (root=0x605350, array2=0x605150) at answer06.c:181
+   #3  0x0000000000400c2a in travel_array2 (root=0x605350, array2=0x605110) at answer06.c:181
+   #4  0x0000000000400cb1 in travel_array2 (root=0x605350, array2=0x6050f0) at answer06.c:194
+   #5  0x0000000000400d29 in SparseArray_merge (array1=0x605010, array2=0x6050f0) at answer06.c:209
+   #6  0x0000000000402e60 in tests_SparseArray_merge (test_number=1) at testcases/test_SparseArray_merge.c:75
+   #7  0x0000000000403061 in main (argc=2, argv=0x7fffffffe4d8) at <stdin>:241
+Testcase FAILED. Log file saved to testcase-69.log

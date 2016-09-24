@@ -1,0 +1,19 @@
+
+Testcase 24
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + lhs is: "2010" ==> NULL
+   + rhs is: "Yesterday" ==> "Tomorrow" ==> "Name" ==> "Hello" ==> "Doctor" ==> "Continue" ==> NULL
+   
+   2) lhs  : 79938560 rhs 79938240 stor = 1
+   merged is  : "2010" ==> "Yesterday" ==> "Tomorrow" ==> "Name" ==> "Hello" ==> "Doctor" ==> "Continue" ==> NULL
+   solution is: "Yesterday" ==> "Tomorrow" ==> "Name" ==> "Hello" ==> "Doctor" ==> "Continue" ==> "2010" ==> NULL
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+Testcase FAILED. Log file saved to testcase-24.log

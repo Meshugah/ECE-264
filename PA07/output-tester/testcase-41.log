@@ -1,0 +1,13 @@
+
+Testcase 41
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return strlen(a) - strlen(b)
+   + list is: "sea" ==> "a" ==> "be" ==> NULL
+   
+   sorted is  : "sea" ==> "a" ==> "be" ==> NULL
+   solution is: "a" ==> "be" ==> "sea" ==> NULL
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+Testcase FAILED. Log file saved to testcase-41.log

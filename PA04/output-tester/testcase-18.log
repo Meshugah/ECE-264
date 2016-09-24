@@ -1,0 +1,11 @@
+
+/**
+ * Testcase 17 :: images/corrupt-testcases/03-width0.ee264 
+ * File header specifies 0 width, which is an error that you must check for. (Image_load should return NULL.)
+ */
+ERRORError: failed to read 'images/corrupt-testcases/03-width0.ee264'
+Attempt to read 'images/corrupt-testcases/03-width0.ee264' as .ee264 format
+The comment is
+File generated from x.png on blakes-7 at Tue Jun 25 14:05:46 EDT 2013 by convert-all.sh
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.

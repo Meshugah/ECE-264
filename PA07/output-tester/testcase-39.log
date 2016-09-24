@@ -1,0 +1,15 @@
+
+Testcase 39
+   Testing List_sort(list, compar), where:
+   
+   + compar is: return strcmp(a, b)
+   + list is: "Hello" ==> "Doctor" ==> "Name" ==> "Continue" ==> "Yesterday" ==> "Tomorrow" ==> NULL
+   
+   sorted is  : "Hello" ==> "Doctor" ==> "Name" ==> "Continue" ==> "Yesterday" ==> "Tomorrow" ==> NULL
+   solution is: "Continue" ==> "Doctor" ==> "Hello" ==> "Name" ==> "Tomorrow" ==> "Yesterday" ==> NULL
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+   Error: sorted list not in order (!)
+Testcase FAILED. Log file saved to testcase-39.log

@@ -1,0 +1,9 @@
+
+/**
+ * Testcase 11 :: images/02-cat-chess.ee264 
+ * Test reading ee264 format
+ */
+Component errorError: failed to read 'images/02-cat-chess.ee264'
+Attempt to read 'images/02-cat-chess.ee264' as .ee264 format
+   Memory errors detected.
+   Valgrind log saved in output-tester/testcase-12.memcheck.log.

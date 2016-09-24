@@ -1,0 +1,277 @@
+#include  "answer04.h"
+#include<stdlib.h>
+#include<string.h>
+#include<stdio.h>
+
+#define FALSE 0
+#define TRUE 1
+
+
+Image * Image_load(const char * filename)
+{
+  FILE *fp = fopen(filename, "rb");
+  size_t read;
+  ImageHeader header;
+  Image * tmp_im = NULL, * im = NULL;
+  size_t n_bytes = 0; //check this
+  int error = FALSE;
+  
+  if(!error)	
+    {
+      fp = fopen(filename, "rb");	
+	  if(fp == NULL)		  
+		  {
+		    fprintf(stderr,"Error, file %s doesnot exist", filename);
+		  // print error message
+			error = TRUE;
+		  }
+    }
+  
+  
+  if(!error)
+    {
+      	read = fread(&header, sizeof(ImageHeader), 1, fp);
+	if(read != 1) {
+	    fprintf(stderr, "Failed to read header from '%s'\n", filename);
+	    error = TRUE;
+	}
+    }
+  
+  if(!error)  //CHECK THIS
+    {
+      if(header.magic_number != ECE264_IMAGE_MAGIC_NUMBER)
+	{
+	  fprintf(stderr,"THIS DOES NOT WORK");
+	  error = TRUE;
+	}
+    }
+  
+  if(!error)
+    {
+      tmp_im = malloc(sizeof(Image));
+      if(tmp_im == NULL) {
+	fprintf(stderr, "Failed to allocate im structure\n");
+	    error = TRUE;
+	} 
+    }
+
+  if(!error)  //CHECK THIS
+    {
+      if(header.comment_len == 0 || header.height == 0 || header.width)
+	{
+	  fprintf(stderr,"Component error");
+	  error = TRUE;
+	}
+    }
+
+  if(!error) 
+    { 
+	tmp_im->width = header.width;
+	tmp_im->height = header.height;
+    }
+  
+  if(!error)	//comment
+    {
+      tmp_im->comment = malloc(sizeof(char) * header.comment_len);
+      if(tmp_im->comment == NULL)
+	{
+	  fprintf(stderr,"No memory for comment");
+	  error = TRUE;
+	}
+    }
+
+  if(!error)//data for tmp in
+    {
+      tmp_im->data = malloc( sizeof(uint8_t) * (tmp_im->width) * (tmp_im->height) );
+		if(tmp_im->data==NULL)
+		  {
+		    fprintf(stderr, "No memory for tmp_im->data");
+		    error = TRUE;
+		  }
+	}
+  
+  
+  
+  if(!error)//read file
+	{
+	  read = fread(tmp_im->comment, sizeof(char), header.comment_len, fp);
+	  
+	  if(read!=header.comment_len)	
+	    {
+	      error = TRUE;
+	      fprintf(stderr,"could not read file or first comment\n");
+	      
+	    }
+	  else if(tmp_im->comment[header.comment_len-1] != '\0' )
+	    {
+	      fprintf(stderr,"NULL error\n");
+	      error = TRUE;
+	    }
+	  else
+	    {
+	      printf("The comment is\n%s", tmp_im->comment);
+	    }
+	}
+  
+  
+  
+  if(!error)
+    {
+    uint8_t test_byte;
+	  read = fread(&test_byte, sizeof(uint8_t), 1, fp);
+		if(read != 0)
+		  {
+		  fprintf(stderr, "ERROR");
+		  error = TRUE;
+		  }
+    }
+
+
+  
+  if(!error)  
+    {
+      read = fread(tmp_im->data, sizeof(uint8_t), ( (tmp_im->width) * (tmp_im->height) ), fp );
+      if(read!= (( (tmp_im->width) * (tmp_im->height) )) )	
+	{
+	  error = TRUE;			
+	  fprintf(stderr, "ERROR: couldn't read tmp_im->data from file");
+	}
+    }
+  if(!error)	
+    {
+      im = tmp_im;
+      tmp_im = NULL;
+    }
+  
+  
+  if(tmp_im != NULL)
+    {
+      //FREE
+      free(tmp_im->data);
+      free(tmp_im->comment);
+
+      free(tmp_im);
+    }
+
+  if(fp != NULL)
+    {
+      fclose(fp);
+    }
+  
+  return im;
+}
+
+
+void Image_free(Image *image)
+{
+  if(image != NULL)
+    {
+      if(image->comment != NULL)
+	{
+	  free(image -> comment);
+	}
+      if(image->data != NULL)
+	{
+	  free(image->data);
+	}
+      free(image);
+    }
+}
+
+
+void linearNormalization(int width, int height, uint8_t *intensity)
+{
+	int length = width * height;
+	int i = 0;
+	
+
+	
+	int max = 0;
+	int min = 255;
+	
+	
+	for(i = 0; i < length; ++i)
+	  {
+	  if(intensity[i] > max)
+	    max = intensity[i];
+	  if(intensity[i] < min)
+	    min = intensity[i];
+	  }
+	
+
+
+
+	for(i = 0; i < length; ++i)
+	  {
+	  intensity[i] = (intensity[i]-min)*255.0/(max - min);
+	}
+}
+
+
+int Image_save(const char * filename, Image *img)
+{
+  FILE *fp = fopen(filename, "wb");
+  int write;
+  ImageHeader header;
+  
+
+
+  int error = FALSE;
+  if(img == NULL)
+    {
+      error = TRUE;
+      fprintf(stderr,"\nNo image found\n");
+    }
+
+
+  if(!error)
+    {
+      header.magic_number = ECE264_IMAGE_MAGIC_NUMBER;
+
+      header.width = img->width;
+      header.height = img->height;
+
+
+      write = fwrite(&header, sizeof(ImageHeader), 1, fp);
+      
+      header.comment_len = (strlen(img->comment) + 1);
+
+      if(write != TRUE)
+	{
+	  error = TRUE;
+	  fprintf(stderr,"problem with HEADER");
+	}
+    }
+
+  
+  
+  
+  if(!error)
+    {
+      write = fwrite(img->comment, sizeof(char), header.comment_len, fp);
+      if(write != header.comment_len)
+	{
+	  error = TRUE;
+	  fprintf(stderr, "NOT WRITING");
+	}
+
+    }
+
+  
+
+  if(!error)
+    {
+      write = fwrite(img->data, sizeof(uint8_t), (img->width) * (img->height), fp);
+		if(write != header.width*header.height)
+		{
+		  error = TRUE;
+			fprintf(stderr, "NO IMAGE DATA");
+		}
+	}
+	if(!error)
+	{
+		fclose(fp);
+	}
+
+	return (!error);	// RETURNS TRUE IF NO ERROR WAS PRESENT WHILE WRITING FILE
+}

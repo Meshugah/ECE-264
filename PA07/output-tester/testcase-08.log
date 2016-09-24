@@ -1,0 +1,9 @@
+
+Testcase 8
+   Testing: List_length(list) =    Program received signal SIGSEGV, Segmentation fault.
+   0x0000000000400993 in List_length (list=0x0) at answer08.c:52
+   52	      while (list->next != NULL) 
+   #0  0x0000000000400993 in List_length (list=0x0) at answer08.c:52
+   #1  0x00000000004015c3 in tests_List_length (test_number=0) at testcases/test_List_length.c:36
+   #2  0x000000000040218e in main (argc=2, argv=0x7fffffffe4e8) at <stdin>:159
+Testcase FAILED. Log file saved to testcase-08.log

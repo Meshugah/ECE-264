@@ -1,0 +1,17 @@
+
+Testcase 21
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return -strcmp(a, b)
+   + lhs is: "7" ==> "5" ==> "3" ==> "2" ==> NULL
+   + rhs is: "23" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   
+   2) lhs  : 79938880 rhs 79938240 stor = 1
+   2) lhs  : 79938720 rhs 79938240 stor = 1
+   2) lhs  : 79938560 rhs 79938240 stor = 1
+   2) lhs  : 79938400 rhs 79938240 stor = 1
+   merged is  : "7" ==> "5" ==> "3" ==> "2" ==> "23" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   solution is: "7" ==> "5" ==> "3" ==> "23" ==> "2" ==> "19" ==> "17" ==> "13" ==> "11" ==> NULL
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+Testcase FAILED. Log file saved to testcase-21.log

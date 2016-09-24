@@ -1,0 +1,20 @@
+
+Testcase 18
+   Testing List_merge(lhs, rhs, compar), where:
+   
+   + compar is: return strcmp(a, b)
+   + lhs is: "b" ==> "d" ==> "f" ==> NULL
+   + rhs is: "a" ==> "c" ==> "e" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+   
+   2) lhs  : 79938720 rhs 79937600 stor = 1
+   2) lhs  : 79938880 rhs 79937600 stor = 1
+   2) lhs  : 79939040 rhs 79937600 stor = -1
+   merged is  : "b" ==> "d" ==> "f" ==> "a" ==> "c" ==> "e" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+   solution is: "a" ==> "b" ==> "c" ==> "d" ==> "e" ==> "f" ==> "g" ==> "h" ==> "i" ==> "j" ==> NULL
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+   Error: merged list not in order (!)
+Testcase FAILED. Log file saved to testcase-18.log

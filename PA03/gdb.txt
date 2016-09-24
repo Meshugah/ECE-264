@@ -1,0 +1,14 @@
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) 
+Breakpoint 1 (echo-lite.c:44) pending.
+Starting program: /home/shay/b/vkarthi/ECE264/solutions/ECE-264/PA03/grep-lite 
+
+Program received signal SIGINT, Interrupt.
+0x0000003fa7edb4c0 in __read_nocancel ()
+    at ../sysdeps/unix/syscall-template.S:82
+82	T_PSEUDO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
+A debugging session is active.
+
+	Inferior 1 [process 18553] will be killed.
+
+Quit anyway? (y or n) 
